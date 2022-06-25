@@ -1,0 +1,6 @@
+- name: jdk8
+  hosts: default
+  become: true
+  roles:
+    - common
+    - jdk8

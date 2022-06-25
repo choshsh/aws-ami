@@ -1,0 +1,20 @@
+- name: Install_Docker
+  command: amazon-linux-extras install docker -y
+
+- name: Add user to group docker
+  user:
+    name: ec2-user
+    groups: docker
+    append: yes
+
+- name: Install docker-compose
+  get_url:
+    url: https://github.com/docker/compose/releases/download/v2.6.1/docker-compose-linux-x86_64
+    dest: /usr/local/bin/docker-compose
+    mode: '+x'
+
+- name: Enable service docker
+  systemd:
+    name: docker
+    enabled: yes
+    state: started

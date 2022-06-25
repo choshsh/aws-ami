@@ -1,0 +1,7 @@
+- name: Enable amazon jdk repo
+  command: amazon-linux-extras enable corretto8
+
+- name: Install jdk8
+  yum:
+    name: java-1.8.0-amazon-corretto-devel
+    state: latest
